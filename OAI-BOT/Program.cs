@@ -13,18 +13,6 @@ namespace OAI_BOT
             ApplicationConfiguration.Initialize();
             Application.Run(new OAI_APP.Form1());
 
-            string cfgPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            cfgPath += "/open-ai-app";
-            if (!Directory.Exists(cfgPath))
-            {
-                Directory.CreateDirectory(cfgPath);
-            }
-
-            string pathToCfg = cfgPath += "/open-ai-cfg.txt";
-            if (!File.Exists(pathToCfg))
-            {
-                File.Create(pathToCfg);
-            }
         }
     }
 }
