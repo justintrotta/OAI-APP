@@ -8,7 +8,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject></StartupObject>
+    <ApplicationIcon>open-uri20210108-68-32alep.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="open-uri20210108-68-32alep.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="OpenAI" Version="1.2.0" />
