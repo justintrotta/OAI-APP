@@ -1,4 +1,4 @@
-﻿namespace OAI_BOT
+﻿namespace OAI_APP
 {
     partial class Form1
     {
@@ -28,78 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.rtb_output = new System.Windows.Forms.RichTextBox();
+            this.btn_generate = new System.Windows.Forms.Button();
+            this.btn_undo = new System.Windows.Forms.Button();
+            this.btn_regenerate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // rtb_output
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.richTextBox1.Location = new System.Drawing.Point(459, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1043, 599);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.WordWrap = false;
+            this.rtb_output.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.rtb_output.Dock = System.Windows.Forms.DockStyle.Right;
+            this.rtb_output.Location = new System.Drawing.Point(459, 0);
+            this.rtb_output.Name = "rtb_output";
+            this.rtb_output.Size = new System.Drawing.Size(1043, 599);
+            this.rtb_output.TabIndex = 0;
+            this.rtb_output.Text = "";
+            this.rtb_output.WordWrap = false;
             // 
-            // button1
+            // btn_generate
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(459, 111);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Generate";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_generate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_generate.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.btn_generate.Location = new System.Drawing.Point(0, 0);
+            this.btn_generate.Name = "btn_generate";
+            this.btn_generate.Size = new System.Drawing.Size(459, 111);
+            this.btn_generate.TabIndex = 1;
+            this.btn_generate.Text = "Generate";
+            this.btn_generate.UseVisualStyleBackColor = true;
+            this.btn_generate.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_undo
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(0, 111);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(459, 121);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Undo";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_undo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_undo.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.btn_undo.Location = new System.Drawing.Point(0, 111);
+            this.btn_undo.Name = "btn_undo";
+            this.btn_undo.Size = new System.Drawing.Size(459, 121);
+            this.btn_undo.TabIndex = 2;
+            this.btn_undo.Text = "Undo";
+            this.btn_undo.UseVisualStyleBackColor = true;
+            this.btn_undo.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btn_regenerate
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(0, 232);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(459, 114);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Regenerate";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_regenerate.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_regenerate.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.btn_regenerate.Location = new System.Drawing.Point(0, 232);
+            this.btn_regenerate.Name = "btn_regenerate";
+            this.btn_regenerate.Size = new System.Drawing.Size(459, 114);
+            this.btn_regenerate.TabIndex = 3;
+            this.btn_regenerate.Text = "Regenerate";
+            this.btn_regenerate.UseVisualStyleBackColor = true;
+            this.btn_regenerate.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::OAI_BOT.Properties.Resources.unnamed;
+            this.BackgroundImage = global::OAI_APP.Properties.Resources.unnamed;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1502, 599);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.btn_regenerate);
+            this.Controls.Add(this.btn_undo);
+            this.Controls.Add(this.btn_generate);
+            this.Controls.Add(this.rtb_output);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private RichTextBox richTextBox1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private RichTextBox rtb_output;
+        private Button btn_generate;
+        private Button btn_undo;
+        private Button btn_regenerate;
     }
 }

@@ -3,10 +3,11 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>OAI_BOT</RootNamespace>
+    <RootNamespace>OAI_APP</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
