@@ -41,11 +41,14 @@ namespace OAI_APP
                 player.Play();
             }
 
-            var result = api.Completions.StreamCompletionAsync(
-                new CompletionRequest(rtb_output.Text, max_tokens: 100, temperature: 0.75, presencePenalty: 0.8, frequencyPenalty: 0.8),
-                res => rtb_output.Text += res.ToString()); 
-    
-
+             var result = api.Completions.StreamCompletionAsync(
+                  new CompletionRequest(rtb_output.Text, max_tokens: 100, temperature: 0.65, presencePenalty: 0.3, frequencyPenalty: 0.3),
+                  res => rtb_output.Text += res.ToString());
+            
+          /*  var result = api.Completions.CreateCompletionsAsync(
+                new CompletionRequest(rtb_output.Text, max_tokens: 100, temperature: 0.65, presencePenalty: 0.8, frequencyPenalty: 0.8), 1).Result;
+            rtb_output.Text += result.Completions.First();
+             */
         }
 
 
