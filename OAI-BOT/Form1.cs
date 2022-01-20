@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
 using OpenAI_API;
 
 namespace OAI_APP
@@ -16,10 +17,11 @@ namespace OAI_APP
     public partial class Form1 : Form
     {
  
-        static string pathToCfg = "./.openai.config";
-        //static string keyInfo = File.ReadAllText(pathToCfg);
-        OpenAIAPI api = new OpenAIAPI(engine: Engine.Davinci);
-        
+        OpenAIAPI api = new OpenAI_API.OpenAIAPI(APIAuthentication.LoadFromPath());
+
+        public bool mute = true;
+
+
 
         public Form1()
         {
@@ -27,10 +29,18 @@ namespace OAI_APP
 
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
-            rtb_output.Text = api.ToString();
+
+            var rand = new Random();
+            var files = Directory.GetFiles("../../../Resources/wav");
+
+            if (!mute)
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(files[rand.Next(files.Length)]);
+                player.Play();
+            }
+
             var result = api.Completions.StreamCompletionAsync(
                 new CompletionRequest(rtb_output.Text, max_tokens: 100, temperature: 0.75, presencePenalty: 0.8, frequencyPenalty: 0.8),
                 res => rtb_output.Text += res.ToString()); 
@@ -38,25 +48,23 @@ namespace OAI_APP
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             string promptValue = "";
-            
-            if (!File.Exists(pathToCfg))
-            {
+
+
+            if (!File.Exists(".openai"))
+            { 
                 promptValue = Prompt.ShowDialog("Enter API key", "OpenAI App Initial Config");
                 string keyValue = "OPENAI_KEY=" + promptValue;
-                File.WriteAllText(pathToCfg, keyValue);
+
+                bool x = string.IsNullOrEmpty(promptValue);
+
+                if (!x)
+                {
+                    File.WriteAllText(".openai", keyValue);
+                }
             }
 
            
@@ -72,21 +80,31 @@ namespace OAI_APP
                 Form prompt = new Form()
                 {
                     Width = 500,
-                    Height = 250,
+                    Height = 200,
                     FormBorderStyle = FormBorderStyle.FixedDialog,
                     Text = caption,
                     StartPosition = FormStartPosition.CenterScreen
                 };
                 Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
                 TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+                Label textLabel2 = new Label() { Left = 125, Top = 120, Width = 400, Text = "Please restart the app after submitting your key" };
                 Button confirmation = new Button() { Text = "Ok", Left = 200, Width = 100, Top = 75, DialogResult = DialogResult.OK };
                 confirmation.Click += (sender, e) => { prompt.Close(); };
                 prompt.Controls.Add(textBox);
                 prompt.Controls.Add(confirmation);
                 prompt.Controls.Add(textLabel);
+                prompt.Controls.Add(textLabel2); 
                 prompt.AcceptButton = confirmation;
 
                 return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+            }
+        }
+
+        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.M && Control.ModifierKeys == Keys.Control)
+            {
+                mute = !mute;
             }
         }
     }
